@@ -1,0 +1,501 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.4s;
+}
+
+html {
+    transition: background-color 0.4s;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.header{
+    background-color: #b53e65;
+    position: fixed;
+    justify-content: space-around;
+    z-index: 1;
+    display: flexbox;
+    width: 100%;
+    height: 90px;
+    color: #000;
+}
+
+.header a {
+    text-decoration: none;
+    color: #000;
+}
+
+.header img {
+    padding-top: 16px;
+    padding-left: 60px;
+    padding-bottom: 30px;
+    float: left;
+    width: 60px;
+    height: 60px;
+}
+
+.header-logo {
+    font-size: 28px;
+    font-weight: bold;
+    float: left;
+    padding: 25px 40px 25px 5px;
+}
+
+.navbar {
+    margin: auto;
+    text-align: center;
+    width: 100%;
+}
+
+.navbar ul {
+    position: sticky;
+    width: 100%;
+}
+
+.navbar ul li{
+    font-weight: bold;
+    list-style: none;
+    float: left;
+}
+
+.navbar ul li :hover {
+    background: #ead9b5;
+}
+
+.navbar ul li :hover a {
+    color: #000;
+}
+
+.navbar ul li a {
+    display: block;
+    padding: 34px 30px;
+    color: #000;
+    text-decoration: none;
+}
+
+.datetime {
+    float: right;
+    font-weight: bold;
+    margin: 35px 25px;
+}
+
+.datetime-masukan {
+    float: right;
+    font-weight: bold;
+    margin: 35px 25px;
+}
+
+.profil {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    color: #000;
+    float: right;
+}
+
+.profil a {
+    display: block;
+    padding: 34px 37px;
+    color: #000;
+    text-decoration: none;
+}
+
+.profil ul li a {
+    padding: 20px 10px;
+}
+
+.profil:hover, .profil:focus {
+    background: #ead9b5;
+}
+
+.profil ul li :hover {
+    background: #ead9b5;
+}
+
+.profil-toggle {
+    display: inline-block;
+}
+
+.profil-toggle:hover .dropdown-profil {
+    display: block;
+}
+
+.dropdown-profil {
+    padding: none;
+    display: none;
+    list-style: none;
+    z-index: 1;
+    background-color: #f9f9f9;
+}
+
+.show {
+    display:block;
+}
+
+.search {
+    margin: 20px;
+    display: inline-block;
+    position: relative;
+}
+
+.search:after {
+    content: "";
+    background: black;
+    width: 2px;
+    height: 10px;
+    position: absolute;
+    top: 35px;
+    right: 2px;
+    transform: rotate(135deg);
+}
+
+.search input {
+    color: #000;
+    font-size: 16px;
+    background: transparent;
+    margin-top: 14px;
+    width: 10px;
+    height: 10px;
+    padding: 5px;
+    border: solid 2px black;
+    outline: none;
+    border-radius: 35px;
+    transition: width 0.5s;
+}
+
+.search input::placeholder {
+    color: #000;
+    opacity: 0;
+    transition: opacity 150ms ease-out;
+}
+
+.search input:focus::placeholder{
+    opacity: 1;
+}
+
+.search input:focus,
+.search input:not(:placeholder-shown) {
+    width: 250px;
+}
+
+.search-submit {
+    background-color: transparent;
+    font-size: 16px;
+    border: none;
+}
+
+.main {
+    height: 1200px;
+}
+
+.main-login {
+    height: 750px;
+}
+
+.main-regis {
+    height: 800px;
+}
+
+.main-contact {
+    height: 100%;
+}
+
+.copy-container {
+    text-align: center;
+}
+
+.content{
+    height: 500px;
+    margin-top: 50px;
+}
+
+.content-item{
+    float: left;
+    margin-right: 40px;
+    margin-left: 20px;
+}
+
+.content-item img {
+    box-shadow: 0px 5px 10px 0px rgb(0 0 0 / 50%);
+    width: 225px;
+    height: 225px;
+    border-radius: 5px;
+}
+
+.content-item li{
+    list-style: none;
+    font-weight: bold;
+    font-size: 24px;
+    padding-left: 0px;
+}
+
+.nama-produk:hover {
+    transition: 0.1s;
+    border-bottom: 3px solid #b53e65;
+}
+
+.content-item a{
+    text-decoration: none;
+    color: #b53e65;
+}
+
+.content-item input {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+    padding: 5px 20px;
+    background: #b53e65;
+    border: none;
+}
+
+#section-title{
+    border-bottom: 2px solid #b53e65;
+    font-size: 28px;
+    font-weight: bold;
+    padding-bottom: 15px;
+    margin-bottom: 50px;
+}
+
+.footer {
+    background-color: #f9beaf;
+    color: #000;
+    height: 300px;
+    padding: 40px;
+}
+
+.footer img {
+    padding-top: 45px;
+    padding-left: 20px;
+    padding-bottom: 30px;
+    float: left;
+    width: 60px;
+    height: 60px;
+}
+
+#footer-judul {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.footer-logo {
+    padding-top: 5px;
+    padding-left: 5px;
+    font-size: 32px;
+    font-weight: bold;
+    float: left;
+}
+
+.footer-logo a {
+    text-decoration: none;
+    color: #000;
+}
+
+.footer-list ul li {
+    list-style: none;
+    float: right;
+    padding: 55px 20px;
+    font-weight: bold;
+}
+
+.footer-list ul li :hover {
+    transition: 0.1s;
+    border-bottom: 3px solid black;
+}
+
+.footer-list ul li a {
+    text-decoration: none;
+    color: #000;
+}
+
+#sosmed-footer {
+    float: right;
+    padding: 55px 20px;
+    font-weight: bold;
+}
+
+.sosmed-container{
+    float: right;
+}
+
+.sosmed-container a {
+    text-decoration: none;
+    padding: 5px;
+}
+
+.sosmed-container ul {
+    position: absolute;
+    display: flex;
+    transform: translate(-50%, -50%);
+    left: 91%;
+    padding-top: 12%;
+}
+
+.sosmed-container ul li {
+    float: right;
+    list-style: none;
+    width: 40px;
+    height: 40px;
+    margin: 0 9px;
+}
+
+.sosmed-container ul li span {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    display: flex !important;
+    background: #2a2a39;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 20px !important;
+    transition: 1s ease-out;
+}
+
+.sosmed-container ul li:hover span {
+    transition: .3s;
+}
+
+.sosmed-container ul li:nth-child(1):hover span {
+    background: #cc296c !important;
+}
+
+.sosmed-container ul li:nth-child(2):hover span {
+    background: green !important;
+}
+
+.sosmed-container ul li:nth-child(3):hover span {
+    background: #2c3456 !important;
+}
+
+.sosmed-ig {
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.sosmed-maps {
+    margin-top: 30px;
+    margin-right: 100px;
+}
+
+.copyright {
+    font-weight: bold;
+    position: relative;
+    width: 80%;
+    top: 83%;
+    text-align: center;
+}
+
+.copyright a {
+    text-decoration: none;
+    color: grey;
+}
+
+@media screen and (max-width: 460px){
+    .toggle {
+        margin: 27px 10px;
+        width: 30px;
+        height: 15px;
+        font-size: 10px;
+    }
+    
+    .circle {
+        width: 14px;
+        height: 14px;
+    }
+
+    .dark-mode .circle {
+        transform: translateX(15px)
+    }
+
+    .header {
+        height: 70px;
+    }
+    
+    .header img {
+        padding-top: 20px;
+        padding-left: 10px;
+        height: 30px;
+        width: 30px;
+    }
+
+    .header-logo {
+        font-size: 14px;
+        padding-top: 25px;
+        padding-right: 10px;
+    }
+
+    .navbar {
+        height: 70px;
+    }
+
+    .navbar ul li a {
+        padding: 28px 15px;
+    }
+
+    .navbar ul li {
+        font-size: 10px;
+    }
+
+    .main {
+        height: 800px;
+    }
+
+    .content {
+        margin-top: auto;
+    }
+
+    .section-title {
+        padding-top: 10px;
+    }
+
+    .content-item {
+        margin-right: 20px;
+        margin-left: 10px;
+    }
+
+    .content-item img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .content-item p{
+        font-size: 14px;
+        padding-left: 0px;
+        padding-bottom: 10px;
+    }
+
+    .footer {
+        height: 100px;
+        padding: 10px;
+    }
+
+    .footer img {
+        padding-top: 10px;
+        padding-left: 1px;
+        height: 30px;
+        width: 30px;
+    }
+
+    .footer-logo {
+        font-size: 16px;
+        padding-top: 11px;
+    }
+
+    .footer-list {
+        font-size: 12px;
+    }
+
+    .footer-list ul li {
+        padding: 10px 10px;
+        margin-top: 30px;
+    }
+
+
+}

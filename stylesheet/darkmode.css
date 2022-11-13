@@ -1,0 +1,42 @@
+.dark-mode {
+    background: #2a2a39;
+    color: white;
+}
+
+.light-mode {
+    background: #f8f3e3;
+    color: #2a2a39;
+}
+
+.toggle {
+    float: right;
+    width: 45px;
+    height: 25px;
+    margin: 31px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+    background: #f8f3e3;
+    color: black;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    transform: translateX(2px);
+    border-radius: 30px;
+    transition: 0.4s;
+    position: absolute;
+    background: #b53e65;
+}
+
+.dark-mode .circle {
+    transform: translateX(23px)
+}
+
+.toggle-moon, .toggle-sun {
+    width: 50%;
+}

@@ -1,0 +1,129 @@
+.contact-form{
+    padding-top: 50px;
+}
+
+.contact-form p {
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.contact-form input{
+    border-radius: 5px;
+    width: 400px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    padding: 20px;
+    font-size: 18px;
+    border: 1px solid #cad3db;
+}
+
+.contact-radio {   
+    border-style: none;
+    outline: none;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.contact-form select {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+	padding: 10px;
+	font-size: 14px;
+    border-radius: 30px;
+}
+
+.contact-form textarea{
+    width: 400px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    padding: 20px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.contact-form input:focus {
+    outline: 1px solid #b53e65;
+}
+
+#contact-submit{
+    background: #b53e65;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #000;
+    box-shadow: 0 4px 20px rgba(213, 29, 81, 0.7);
+}
+
+#contact-submit:hover {
+    box-shadow: 0 10px 20px rgba(213, 29, 81, 0.7);
+}
+
+.button-tambah a{
+    background-color: #b53e65;
+    margin: 20px;
+    padding: 10px;
+    float: right;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+table {
+    border-collapse: collapse;
+    width: 98%;
+    margin-left: 15px;
+}
+
+table td {
+    border: 1px solid #b53e65;
+    padding: 8px;
+    font-weight: 600;
+}
+
+table th {
+    font-size: 20px;
+}
+
+table tr:hover {
+    background-color: #f9beaf;
+}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #b53e65;
+}
+
+.th-no {
+    border-top-left-radius: 10px;
+}
+
+.th-action {
+    border-top-right-radius: 10px;
+}
+
+.gambar {
+    text-align: center;
+}
+
+.icon {
+    text-align: center;
+}
+
+.icon a {
+    padding: 5px;
+    color: #b53e65;
+}
+
+h1 {
+    text-align: center;
+    padding: 10px;
+}
