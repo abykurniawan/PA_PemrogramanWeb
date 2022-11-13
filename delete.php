@@ -13,6 +13,11 @@
             </script>
         <?php
     }else {
+<<<<<<< HEAD
+=======
+
+        
+>>>>>>> c2a455b (dhim)
         ?>
             <script>
                 alert("Data gagal dihapus!");
