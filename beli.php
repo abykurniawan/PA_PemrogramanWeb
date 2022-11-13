@@ -1,4 +1,3 @@
-tess
 <?php 
     require 'koneksi.php';
 
