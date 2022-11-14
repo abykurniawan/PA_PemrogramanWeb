@@ -51,7 +51,7 @@
             ?>
             <a onclick="functiondropdown()" class="profil-toggle"><?php echo $_SESSION['nama']; ?> </a>
             <ul id="dropdown-content" class="dropdown-profil">
-                <li><a href=""><i class="fa-regular fa-user" style='padding-right: 10px;'></i>Profil</a></li>
+                <li><a href="profil.php"><i class="fa-regular fa-user" style='padding-right: 10px;'></i>Profil</a></li>
                 <li><a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket" style='padding-right: 10px;'></i>Logout</a></li>
             </ul>
         </div>
