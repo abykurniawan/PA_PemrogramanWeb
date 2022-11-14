@@ -168,7 +168,7 @@
                     ?>
                         <script>
                             alert("Data berhasil ditambahkan!");
-                            window.location='masukan.php';
+                            window.location='homeuser.php';
                         </script>
                     <?php
                 }else{

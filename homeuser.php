@@ -30,7 +30,7 @@
         <div class="navbar">
             <nav>
                 <ul>
-                    <li><a href="login.php">Login</a></li>
+                    <li><a href="index.php">Halaman Utama</a></li>
                     <li><a href="#footer-judul">About Us</a></li>
                     <li><a href="riwayat.php">Riwayat</a></li>
                 </ul>

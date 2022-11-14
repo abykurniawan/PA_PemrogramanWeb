@@ -72,7 +72,15 @@
                         while($row = mysqli_fetch_array($kopi)){
                 ?>
                 <div class="content-item">
-                    <li><a href="#"><img src="foto_produk/<?php echo $row ["foto"] ?>" alt="produk-img"></a></li>
+                    <li>
+                        <input type="hidden" name="deskripsi" value="<?php echo $row['deskripsi']; ?>">
+                        <a href="#"><img src="foto_produk/<?php echo $row ["foto"] ?>" alt="produk-img">
+                            <li>
+                                <p>Deskripsi Produk</p>
+                                <?php echo $row['deskripsi']; ?>
+                            </li>
+                        </a>
+                    </li>
                     <li>
                         <?php $row['nama_produk']; ?>
                         <input type="hidden" name="id_produk" value="<?php echo $row['id_produk']; ?>">

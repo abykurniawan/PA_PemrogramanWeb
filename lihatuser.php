@@ -80,7 +80,7 @@
         <br>
         <br>
         <br>
-        <h1>Daftar Saran dan Kritik Gahwa Story Coffee</h1>
+        <h1>Daftar Akun User Website Gahwa Story Coffee</h1>
         <br>
         <?php 
         if(isset($_GET['cari'])){
@@ -110,8 +110,7 @@
                 <td><?php echo $hub ["email"]; ?></td>
                 <td><?php echo $hub ["username"]; ?></td>
                 <td class="icon">
-                    <a href="update.php?id=<?php echo $hub ["id_user"]; ?>" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="delete.php?id=<?php echo $hub ["id_user"]; ?>" role="button" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?');"><i class="fa-regular fa-trash-can"></i></a>
+                    <a href="deleteuser.php?id=<?php echo $hub ["id_user"]; ?>" role="button" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?');"><i class="fa-regular fa-trash-can"></i></a>
                 </td>
             </tr>
             <?php $id++; endforeach; ?>
