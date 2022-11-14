@@ -63,7 +63,7 @@
         <br>
         <div class="contact-form">
             <form action="" name="form" method="POST" enctype="multipart/form-data">
-                <h3 id="section-title">Hubungi Kami</h3>
+                <h3 id="section-title">TAMBAH DATA</h3>
                 <p>Nama Produk</p>
                 <input type="text" name="nama_produk" placeholder="masukkan nama produk" required>
 
