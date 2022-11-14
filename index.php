@@ -38,7 +38,8 @@
         </div>
     </header>
 
-    <div class="main">
+    <div class="main"> 
+    <a href="index.php"><img src="image/gahwabg.png" alt=""></a>
 
     </div>
 
