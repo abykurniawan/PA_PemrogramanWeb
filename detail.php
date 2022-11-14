@@ -152,6 +152,7 @@
             if($beli){
                 ?>
                     <script>
+                        alert("Berhasil");
                         window.location = "beli.php";
                     </script>
                 <?php
