@@ -112,8 +112,8 @@
                 <td><?php echo $hub ["nama_produk"]; ?></td>
                 <td><?php echo $hub ["harga"]; ?></td>
                 <td class="icon">
-                    <a href="update.php?id=<?php echo $hub ["id"]; ?>" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="delete.php?id=<?php echo $hub ["id"]; ?>" role="button" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?');"><i class="fa-regular fa-trash-can"></i></a>
+                    <a href="update.php?id=<?php echo $hub ["id_pembelian"]; ?>" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="delete.php?id=<?php echo $hub ["id_pembelian"]; ?>" role="button" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?');"><i class="fa-regular fa-trash-can"></i></a>
                 </td>
             </tr>
             <?php $id++; endforeach; ?>
