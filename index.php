@@ -39,8 +39,7 @@
     </header>
 
     <div class="main"> 
-    <a href="index.php"><img src="image/gahwabg.png" alt=""></a>
-
+        <a href="index.php"><img src="image/gahwabg.png" alt=""></a>
     </div>
 
     <footer class="footer">

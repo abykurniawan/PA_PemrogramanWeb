@@ -11,7 +11,7 @@
     $user = $_SESSION['username']['id_user'];
     if(isset($_GET['cari'])){
         $cari = $_GET['cari'];
-        $result = mysqli_query($conn, "SELECT * FROM pembelian WHERE nama LIKE '%".$cari."%'");			
+        $result = mysqli_query($conn, "SELECT * FROM pembelian WHERE nama_produk LIKE '%".$cari."%'");			
     }else{
         $result = mysqli_query($conn, "SELECT * FROM pembelian left join produk on pembelian.id_produk = produk.id_produk where id_user = $user");		
     }
@@ -68,7 +68,7 @@
                 </ul>
             </nav>
         </div>
-        <form action="masukan.php" method="GET">
+        <form action="riwayat.php" method="GET">
             <div class="search">
                 <input type="text" name="cari" placeholder="Search..." required>
             </div>
@@ -81,15 +81,12 @@
         <br>
         <br>
         <br>
-        <h1>Daftar Saran dan Kritik Gahwa Story Coffee</h1>
-        <div class="button-tambah">
-            <a href="contact.php" role="button"><i class="fa-solid fa-plus" style="padding-right: 5px;"></i>Tambah Data</a>
-        </div>
+        <h1>Riwayat Pembelian</h1>
         <br>
         <?php 
         if(isset($_GET['cari'])){
             $cari = $_GET['cari'];
-            echo "<a href='masukan.php' role='button' style='text-decoration: none;
+            echo "<a href='riwayat.php' role='button' style='text-decoration: none;
                                                              color: black;
                                                              margin: 20px;
                                                              padding: 10px;
@@ -99,22 +96,17 @@
             </a>";
         }
         ?>
-        <table id="table-contact">
+        <table id="table-contact" style="margin-top: 20px;">
             <tr>
                 <th class="th-no">No</th>
-                <th>nama Produk</th>
+                <th>Nama Produk</th>
                 <th>Harga</th>
-                <th class="th-action">Action</th>
             </tr>
             <?php $id = 1; foreach($hubungi as $hub) :?>
             <tr>
                 <td><?php echo $id; ?></td>
                 <td><?php echo $hub ["nama_produk"]; ?></td>
-                <td><?php echo $hub ["harga"]; ?></td>
-                <td class="icon">
-                    <a href="update.php?id=<?php echo $hub ["id_pembelian"]; ?>" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="delete.php?id=<?php echo $hub ["id_pembelian"]; ?>" role="button" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?');"><i class="fa-regular fa-trash-can"></i></a>
-                </td>
+                <td><?php echo $hub ["harga_produk"]; ?></td>
             </tr>
             <?php $id++; endforeach; ?>
         </table>

@@ -1,11 +1,24 @@
-<?php 
+<?php
     require 'koneksi.php';
 
     session_start();
-    
+ 
     if (!isset($_SESSION['username'])) {
         $_SESSION["nama"] = $nama;
         header("Location: login.php");
+    }
+
+    if(isset($_GET['cari'])){
+        $cari = $_GET['cari'];
+        $result = mysqli_query($conn, "SELECT * FROM user WHERE nama LIKE '%".$cari."%'");			
+    }else{
+        $result = mysqli_query($conn, "SELECT * FROM user");		
+    }
+
+    $hubungi = [];
+
+    while ($row = mysqli_fetch_assoc($result)){
+        $hubungi[] = $row; 
     }
 ?>
 
@@ -54,36 +67,55 @@
                 </ul>
             </nav>
         </div>
+        <form action="lihatuser.php" method="GET">
+            <div class="search">
+                <input type="text" name="cari" placeholder="Search..." required>
+            </div>
+            <input type="submit" class="search-submit" value="Cari">
+        </form>
     </header>
 
-    <div class="main-admin">
+    <div class="main"> 
         <br>
         <br>
         <br>
         <br>
-        <div class="hamburger">
-            <a class="toggle-hamburger">
-                <div class="hamburger-menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </a>
-            <a href="" class="logo-hamburger">
-                Menu Admin
-            </a>
-        </div>
-        <div class="sidebar">
-            <ul>
-                <br>
-                <br>
-                <br>
-                <br>
-                <li><a href="tambahproduk.php">Tambah Produk</a></li>
-                <li><a href="lihatmasukan.php">Data Kritik & Saran</a></li>
-                <li><a href="lihatuser.php">Data User</a></li>
-            </ul>
-        </div>
+        <h1>Daftar Saran dan Kritik Gahwa Story Coffee</h1>
+        <br>
+        <?php 
+        if(isset($_GET['cari'])){
+            $cari = $_GET['cari'];
+            echo "<a href='lihatuser.php' role='button' style='text-decoration: none;
+                                                             color: black;
+                                                             margin: 20px;
+                                                             padding: 10px;
+                                                             font-weight: bold;
+                                                             background-color: #b53e65;'>
+            Tampilkan Semua Data
+            </a>";
+        }
+        ?>
+        <table id="table-contact">
+            <tr>
+                <th class="th-no">No</th>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th class="th-action">Action</th>
+            </tr>
+            <?php $id = 1; foreach($hubungi as $hub) :?>
+            <tr>
+                <td><?php echo $id; ?></td>
+                <td><?php echo $hub ["nama"]; ?></td>
+                <td><?php echo $hub ["email"]; ?></td>
+                <td><?php echo $hub ["username"]; ?></td>
+                <td class="icon">
+                    <a href="update.php?id=<?php echo $hub ["id_user"]; ?>" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="delete.php?id=<?php echo $hub ["id_user"]; ?>" role="button" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?');"><i class="fa-regular fa-trash-can"></i></a>
+                </td>
+            </tr>
+            <?php $id++; endforeach; ?>
+        </table>
     </div>
     <br>
     <br>
@@ -120,7 +152,6 @@
 
     <script src="script.js"></script>
     <script src="dropdown.js"></script>
-    <script src="hamburger.js"></script>
 
 </body>
 </html>

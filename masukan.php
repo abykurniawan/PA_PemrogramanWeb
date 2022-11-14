@@ -1,24 +1,11 @@
-<?php
+<?php 
     require 'koneksi.php';
 
     session_start();
- 
+    
     if (!isset($_SESSION['username'])) {
         $_SESSION["nama"] = $nama;
         header("Location: login.php");
-    }
-
-    if(isset($_GET['cari'])){
-        $cari = $_GET['cari'];
-        $result = mysqli_query($conn, "SELECT * FROM hubungi WHERE nama LIKE '%".$cari."%'");			
-    }else{
-        $result = mysqli_query($conn, "SELECT * FROM hubungi");		
-    }
-
-    $hubungi = [];
-
-    while ($row = mysqli_fetch_assoc($result)){
-        $hubungi[] = $row; 
     }
 ?>
 
@@ -67,66 +54,48 @@
                 </ul>
             </nav>
         </div>
-        <form action="masukan.php" method="GET">
-            <div class="search">
-                <input type="text" name="cari" placeholder="Search..." required>
-            </div>
-            <input type="submit" class="search-submit" value="Cari">
-        </form>
     </header>
 
-    <div class="main"> 
+    <div class="main-contact">
         <br>
         <br>
         <br>
         <br>
-        <h1>Daftar Saran dan Kritik Gahwa Story Coffee</h1>
-        <div class="button-tambah">
-            <a href="contact.php" role="button"><i class="fa-solid fa-plus" style="padding-right: 5px;"></i>Tambah Data</a>
+        <div class="contact-form">
+            <form action="" name="form" method="POST" enctype="multipart/form-data">
+                <h3 id="section-title">Hubungi Kami</h3>
+                <p>Nama</p>
+                <input type="text" name="nama" placeholder="masukkan nama anda" required>
+
+                <p>Email (Wajib Diisi)</p>
+                <input type="email" name="email" placeholder="masukkan email anda" required>
+
+                <p>Telepon</p>
+                <input type="number" name="telepon" required>
+
+                <p>Jenis Kelamin</p>
+                <input type="radio" name="jenis" class="contact-radio" id="gender" value="laki-laki">Laki-Laki <br>
+                <input type="radio" name="jenis" class="contact-radio" id="gender" value="perempuan">Perempuan <br>
+
+                <p>Lokasi Gerai</p>
+                <select name="lokasi">
+                    <option value="Gahwa Waru">Gahwa Waru</option>
+                    <option value="Gahwa Silkar">Gahwa Silkar</option>
+                </select>
+
+                <p>Pesan (Wajib Diisi)</p>
+                <textarea cols="40" rows="8" name="pesan"></textarea>
+
+                <p>Upload File (Wajib Diisi)</p>
+                <input type="file" name="nama_file">
+
+                <input type="checkbox"><br>
+                <span class="notice">Apakah Anda Yakin???</span>
+
+                <p>*Bidang Wajib Diisi</p>
+                <input type="submit" id="contact-submit" name="submit" value="Kirim">            
+            </form>
         </div>
-        <br>
-        <?php 
-        if(isset($_GET['cari'])){
-            $cari = $_GET['cari'];
-            echo "<a href='masukan.php' role='button' style='text-decoration: none;
-                                                             color: black;
-                                                             margin: 20px;
-                                                             padding: 10px;
-                                                             font-weight: bold;
-                                                             background-color: #b53e65;'>
-            Tampilkan Semua Data
-            </a>";
-        }
-        ?>
-        <table id="table-contact">
-            <tr>
-                <th class="th-no">No</th>
-                <th>nama</th>
-                <th>Email</th>
-                <th>Telepon</th>
-                <th>Jenis Kelamin</th>
-                <th>Lokasi Gerai</th>
-                <th>Pesan</th>
-                <th>File</th>
-                <th class="th-action">Action</th>
-            </tr>
-            <?php $id = 1; foreach($hubungi as $hub) :?>
-            <tr>
-                <td><?php echo $id; ?></td>
-                <td><?php echo $hub ["nama"]; ?></td>
-                <td><?php echo $hub ["email"]; ?></td>
-                <td><?php echo $hub ["telepon"]; ?></td>
-                <td><?php echo $hub ["jenis"]; ?></td>
-                <td><?php echo $hub ["lokasi"]; ?></td>
-                <td><?php echo $hub ["pesan"]; ?></td>
-                <td class="gambar"><img src="file/<?php echo $hub ["nama_file"] ?>" alt="masukan-img" style="width: 120px;"></td>
-                <td class="icon">
-                    <a href="update.php?id=<?php echo $hub ["id"]; ?>" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="delete.php?id=<?php echo $hub ["id"]; ?>" role="button" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?');"><i class="fa-regular fa-trash-can"></i></a>
-                </td>
-            </tr>
-            <?php $id++; endforeach; ?>
-        </table>
     </div>
     <br>
     <br>
@@ -170,6 +139,61 @@
 
     <script src="script.js"></script>
     <script src="dropdown.js"></script>
+
+    <?php
+    include 'koneksi.php';
+    if(isset($_POST['submit'])) {
+        $nama = $_POST['nama'];
+        $email = $_POST['email'];
+        $telepon = $_POST['telepon'];
+        $jenis = $_POST['jenis'];
+        $lokasi = $_POST['lokasi'];
+        $pesan = $_POST['pesan'];
+        $ekstensi_diperbolehkan	= array('png','jpg');
+		$nama_file = $_FILES['nama_file']['name'];
+		$x = explode('.', $nama_file);
+		$ekstensi = strtolower(end($x));
+		$ukuran	= $_FILES['nama_file']['size'];
+		$file_tmp = $_FILES['nama_file']['tmp_name'];
+
+        move_uploaded_file($file_tmp, 'file/'.$nama_file);
+        $sql = "INSERT INTO hubungi (id, nama, email, telepon, jenis, lokasi, pesan, nama_file)
+                VALUES (null, '".$nama."', '".$email."', '".$telepon."', '".$jenis."', '".$lokasi."', '".$pesan."', '".$nama_file."')";
+
+        $result = mysqli_query($conn, $sql);
+
+        if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
+            if($ukuran < 1044070){
+                if($result){
+                    ?>
+                        <script>
+                            alert("Data berhasil ditambahkan!");
+                            window.location='masukan.php';
+                        </script>
+                    <?php
+                }else{
+                    ?>
+                        <script>
+                            alert("Data gagal ditambahkan!");
+                        </script>
+                    <?php
+                }
+            }else{
+                ?>
+                    <script>
+                        alert("Ukuran File Terlalu Besar!");
+                    </script>
+                <?php
+            }
+        }else{
+            ?>
+                <script>
+                    alert("Ekstensi File Tidak Diperbolehkan!");
+                </script>
+            <?php
+        }
+    }
+    ?>
 
 </body>
 </html>

@@ -63,34 +63,18 @@
         <br>
         <div class="contact-form">
             <form action="" name="form" method="POST" enctype="multipart/form-data">
-                <h3 id="section-title">Hubungi Kami</h3>
-                <p>Nama</p>
-                <input type="text" name="nama" placeholder="masukkan nama anda" required>
+                <h3 id="section-title">TAMBAH PRODUK</h3>
+                <p>Nama Produk</p>
+                <input type="text" name="nama_produk" placeholder="masukkan nama produk" required>
 
-                <p>Email (Wajib Diisi)</p>
-                <input type="email" name="email" placeholder="masukkan email anda" required>
+                <p>Harga</p>
+                <input type="number" name="harga" placeholder="masukkan harga" required>
 
-                <p>Telepon</p>
-                <input type="number" name="telepon" required>
-
-                <p>Jenis Kelamin</p>
-                <input type="radio" name="jenis" class="contact-radio" id="gender" value="laki-laki">Laki-Laki <br>
-                <input type="radio" name="jenis" class="contact-radio" id="gender" value="perempuan">Perempuan <br>
-
-                <p>Lokasi Gerai</p>
-                <select name="lokasi">
-                    <option value="Gahwa Waru">Gahwa Waru</option>
-                    <option value="Gahwa Silkar">Gahwa Silkar</option>
-                </select>
-
-                <p>Pesan (Wajib Diisi)</p>
-                <textarea cols="40" rows="8" name="pesan"></textarea>
+                <p>Deskripsi</p>
+                <input type="text" name="deskripsi" placeholder="masukkan deskripsi produk" required>
 
                 <p>Upload File (Wajib Diisi)</p>
-                <input type="file" name="nama_file">
-
-                <input type="checkbox"><br>
-                <span class="notice">Apakah Anda Yakin???</span>
+                <input type="file" name="foto">
 
                 <p>*Bidang Wajib Diisi</p>
                 <input type="submit" id="contact-submit" name="submit" value="Kirim">            
@@ -103,14 +87,7 @@
         <a href="index.php"><img src="image/image.png" alt=""></a>
         <div id="footer-judul">ABOUT US</div>
         <div class="footer-logo"><a href="index.php">Gahwa Story Coffee</a></div>
-        <div class="footer-list">
-            <h3 id="sosmed-footer">Temukan Kami Di</h3>
-            <nav>
-                <ul>
-                    <li><a href="masukan.php">Hubungi Kami</a></li>
-                </ul>
-            </nav>
-        </div>
+        <h3 id="sosmed-footer">Temukan Kami Di</h3>
         <div class="sosmed-container">
             <ul>
                 <li>
@@ -143,22 +120,19 @@
     <?php
     include 'koneksi.php';
     if(isset($_POST['submit'])) {
-        $nama = $_POST['nama'];
-        $email = $_POST['email'];
-        $telepon = $_POST['telepon'];
-        $jenis = $_POST['jenis'];
-        $lokasi = $_POST['lokasi'];
-        $pesan = $_POST['pesan'];
+        $nama_produk = $_POST['nama_produk'];
+        $harga = $_POST['harga'];
+        $deskripsi = $_POST['deskripsi'];
         $ekstensi_diperbolehkan	= array('png','jpg');
-		$nama_file = $_FILES['nama_file']['name'];
-		$x = explode('.', $nama_file);
+		$foto = $_FILES['foto']['name'];
+		$x = explode('.', $foto);
 		$ekstensi = strtolower(end($x));
-		$ukuran	= $_FILES['nama_file']['size'];
-		$file_tmp = $_FILES['nama_file']['tmp_name'];
+		$ukuran	= $_FILES['foto']['size'];
+		$file_tmp = $_FILES['foto']['tmp_name'];
 
-        move_uploaded_file($file_tmp, 'file/'.$nama_file);
-        $sql = "INSERT INTO hubungi (id, nama, email, telepon, jenis, lokasi, pesan, nama_file)
-                VALUES (null, '".$nama."', '".$email."', '".$telepon."', '".$jenis."', '".$lokasi."', '".$pesan."', '".$nama_file."')";
+        move_uploaded_file($file_tmp, 'foto_produk/'.$foto);
+        $sql = "INSERT INTO produk (id_produk, nama_produk, harga, deskripsi, foto)
+                VALUES (null, '".$nama_produk."', '".$harga."', '".$deskripsi."', '".$foto."')";
 
         $result = mysqli_query($conn, $sql);
 
@@ -168,7 +142,7 @@
                     ?>
                         <script>
                             alert("Data berhasil ditambahkan!");
-                            window.location='masukan.php';
+                            window.location='homeadmin.php';
                         </script>
                     <?php
                 }else{
