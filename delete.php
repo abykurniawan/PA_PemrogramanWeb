@@ -9,14 +9,14 @@
         ?>
             <script>
                 alert("Data berhasil dihapus!");
-                window.location='masukan.php';
+                window.location='lihatmasukan.php';
             </script>
         <?php
     }else {
         ?>
             <script>
                 alert("Data gagal dihapus!");
-                window.location='masukan.php';
+                window.location='lihatmasukan.php';
             </script>
         <?php
     }      

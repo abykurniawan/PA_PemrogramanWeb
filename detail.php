@@ -22,35 +22,44 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <header class="header">
-        <div class="toggle"> <!--Untuk latar belakang-->    
-            <div class="circle"></div> <!--Icon lingkaran-->    
-            <div class="toggle-moon"><i class="fas fa-moon"></i></div> <!--Icon bulan-->    
-            <div class="toggle-sun"><i class="fas fa-sun"></i></div> <!--Icon matahari-->
-        </div>
-        <a href="index.php"><img src="image/image.png" alt=""></a>
-        <div class="header-logo"><a href="index.php">Gahwa Story Coffee</a></div>
-        <div class="navbar">
-            <nav>
-                <ul>
-                    <li><a href="login.php">Login</a></li>
-                    <li><a href="#footer-judul">About Us</a></li>
-                    <li><a href="riwayat.php">Riwayat</a></li>
+    <header class="text-bg-dark sticky-top">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
+                <a href="index.php" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <div class="header-logo">
+                        <img src="image/image.png" alt="" style="width: 50px; height: 50px;" class="text-start">
+                        Gahwa Story Coffee
+                    </div>
+                </a>
+
+                <ul class="nav col-md-3 col-md-auto mb-2 justify-content-center mb-md-0">
+                    <li class="nav-item">
+                        <a href="index.php" class="nav-link px-2 text-white">Halaman Utama</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="homeuser.php" class="nav-link px-2 text-secondary text-hover">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#footer-judul" class="nav-link px-2 text-secondary">About Us</a>
+                    </li>
                 </ul>
-            </nav>
-        </div>
-        <div class="datetime">
-            <?php
-                date_default_timezone_set("Asia/Makassar");
-                echo date("h:i:sa");
-            ?>
-        </div>
-        <div class="profil">
-            <a onclick="functiondropdown()" class="profil-toggle"><?php echo $_SESSION['nama']; ?> </a>
-            <ul id="dropdown-content" class="dropdown-profil">
-                <li><a href="profil.php"><i class="fa-regular fa-user" style='padding-right: 10px;'></i>Profil</a></li>
-                <li><a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket" style='padding-right: 10px;'></i>Logout</a></li>
-            </ul>
+                
+                <div class="col-md-3 text-end">
+                    <a href="login.php" role="button" class="btn btn-outline-light me-2">Login</a>
+                    <a href="regis.php" role="button" class="btn btn-warning">Registrasi</a>
+                </div>
+                <div class="datetime">
+                    <?php
+                        date_default_timezone_set("Asia/Makassar");
+                        echo date("h:i:sa");
+                    ?>
+                </div>
+                <div class="toggle"> <!--Untuk latar belakang-->    
+                    <div class="circle"></div> <!--Icon lingkaran-->    
+                    <div class="toggle-moon"><i class="fas fa-moon"></i></div> <!--Icon bulan-->    
+                    <div class="toggle-sun"><i class="fas fa-sun"></i></div> <!--Icon matahari-->
+                </div>
+            </div>
         </div>
     </header>
 

@@ -45,8 +45,8 @@
                 if($result){
                     ?>
                         <script>
-                            alert("Data berhasil ditambahkan!");
-                            window.location='masukan.php';
+                            alert("Data berhasil diupdate!");
+                            window.location='lihatmasukan.php';
                         </script>
                     <?php
                 }else{
@@ -114,7 +114,7 @@
         <div class="profil">
             <a onclick="functiondropdown()" class="profil-toggle"><?php echo $_SESSION['nama']; ?> </a>
             <ul id="dropdown-content" class="dropdown-profil">
-                <li><a href=""><i class="fa-regular fa-user" style='padding-right: 10px;'></i>Profil</a></li>
+                <li><a href="profil.php"><i class="fa-regular fa-user" style='padding-right: 10px;'></i>Profil</a></li>
                 <li><a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket" style='padding-right: 10px;'></i>Logout</a></li>
             </ul>
         </div>
@@ -126,7 +126,7 @@
         <br>
         <br>
         <div class="contact-form">
-            <form action="masukan.php" name="form" method="POST" enctype="multipart/form-data">
+            <form action="" name="form" method="POST" enctype="multipart/form-data">
                 <h3 id="section-title">UPDATE DATA MASUKAN DAN SARAN</h3>
                 <p>Nama</p>
                 <input type="text" name="nama" id="nama" placeholder="masukkan nama anda" value="<?php echo $hub['nama'] ?>" required>
