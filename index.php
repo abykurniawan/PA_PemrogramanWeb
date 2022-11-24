@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="stylesheet/style.css">
     <link rel="stylesheet" href="stylesheet/darkmode.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="jquery.js"></script>
     <script src="https://kit.fontawesome.com/a45685b897.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -21,7 +20,7 @@
                 <a href="index.php" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                     <div class="header-logo">
                         <img src="image/image.png" alt="" style="width: 50px; height: 50px;" class="text-start">
-                        Gahwa Story Coffee
+                        Gahwa Story Coffee  
                     </div>
                 </a>
 
@@ -46,11 +45,6 @@
                         date_default_timezone_set("Asia/Makassar");
                         echo date("h:i:sa");
                     ?>
-                </div>
-                <div class="toggle"> <!--Untuk latar belakang-->    
-                    <div class="circle"></div> <!--Icon lingkaran-->    
-                    <div class="toggle-moon"><i class="fas fa-moon"></i></div> <!--Icon bulan-->    
-                    <div class="toggle-sun"><i class="fas fa-sun"></i></div> <!--Icon matahari-->
                 </div>
             </div>
         </div>
