@@ -75,6 +75,7 @@
                     <div class="footer-list">
                         <ul class="list-unstyled d-flex">
                             <li class="nav-item mb-2"><a href="masukan.php" class="nav-link p-0 text-muted">Hubungi Kami</a></li>
+                            <li class="nav-item mb-2"><a href="gelap.php" class="nav-link p-0 text-muted">gelap</a></li>
                         </ul>
                     </div>
                 </div>

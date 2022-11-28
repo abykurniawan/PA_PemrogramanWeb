@@ -4,12 +4,12 @@ $(function darkmode() {
     $(".toggle").click(function() {
         if (html.hasClass("dark-mode")) {
             html.removeClass("dark-mode");
-            html.addClass("light-mode");
+            html.addClass("main-regis");
             localStorage.setItem("dark-mode", false);
         }
 
         else {
-            html.removeClass("light-mode")
+            html.removeClass("main-regis")
             html.addClass("dark-mode");
             localStorage.setItem("dark-mode", true);
         }

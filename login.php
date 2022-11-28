@@ -96,7 +96,6 @@
                         echo date("h:i:sa");
                     ?>
                 </div>
-                <script src="script.js"></script>
                 <div class="toggle"> <!--Untuk latar belakang-->   
                     <div class="circle"></div> <!--Icon lingkaran-->    
                     <div class="toggle-moon"><i class="fas fa-moon"></i></div> <!--Icon bulan-->    
@@ -111,7 +110,10 @@
             <h2>Masuk</h2>
             <?php
                 if(isset($error)){
-                    echo "<p style='font-weight: bold; padding-bottom: 15px;'> Username atau password Anda salah. Silahkan coba lagi!</p>";
+                    echo 
+                    "<p style='font-weight: bold; padding-bottom: 15px;'>
+                        Username atau password Anda salah. Silahkan coba lagi!
+                    </p>";
                 }
             ?>
             <form action="" method="POST">
@@ -125,7 +127,7 @@
                     <span class="toggle-password"><i class="fa-regular fa-eye-slash"></i></span>
                 </div>
                 <div class="button-regis">
-                    <a href="regis.php">Belum punya akun???</a>
+                    <a href="regis.php" class="text-black">Belum punya akun???</a>
                 </div>
                 <div class="submit-login">
                     <span></span>
@@ -194,6 +196,8 @@
             </p>
         </div>
     </footer>
+
+    <script src="script.js"></script>
 
 </body>
 </html>

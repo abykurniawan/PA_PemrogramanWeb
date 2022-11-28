@@ -3,11 +3,6 @@
     color: white;
 }
 
-.light-mode {
-    background: #f8f3e3;
-    color: #2a2a39;
-}
-
 .toggle {
     float: right;
     width: 45px;

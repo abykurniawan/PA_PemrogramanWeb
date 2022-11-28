@@ -15,6 +15,8 @@
     margin: 0 0 30px;
     padding: 0;
     text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
 }
 
 .login .user {
@@ -50,6 +52,7 @@
 }
 
 .login .user label {
+    font-family: 'Poppins', sans-serif;
     position: absolute;
     top: 0;
     left: 0;
@@ -61,6 +64,7 @@
 }
 
 .login .input-password label {
+    font-family: 'Poppins', sans-serif;
     position: absolute;
     top: 0;
     left: 0;
@@ -223,15 +227,15 @@
 }
 
 .button-regis a {
+    font-family: 'Poppins', sans-serif;
     text-decoration: none;
     font-size: 14px;
     font-weight: bold;
-    color: #b53e65;
 }
 
 .button-regis a:hover {
     transition: 0.1s;
-    border-bottom: 2px solid #b53e65;
+    border-bottom: 2px solid #000;
 }
 
 .input-password .toggle-password {

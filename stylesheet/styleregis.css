@@ -12,6 +12,8 @@
 }
 
 .regis h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
     margin: 0 0 30px;
     padding: 0;
     text-align: center;
@@ -50,6 +52,7 @@
 }
 
 .regis .user label {
+    font-family: 'Poppins', sans-serif;
     position: absolute;
     top: 0;
     left: 0;
@@ -61,6 +64,7 @@
 }
 
 .regis .input-password label {
+    font-family: 'Poppins', sans-serif;
     position: absolute;
     top: 0;
     left: 0;
