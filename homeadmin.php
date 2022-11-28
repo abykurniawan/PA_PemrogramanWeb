@@ -79,6 +79,7 @@
                 <br>
                 <br>
                 <li><a href="tambahproduk.php">Tambah Produk</a></li>
+                <li><a href="lihatproduk.php">List Produk</a></li>
                 <li><a href="lihatmasukan.php">Data Kritik & Saran</a></li>
                 <li><a href="lihatuser.php">Data User</a></li>
             </ul>

@@ -1,25 +1,7 @@
-<?php
+<?php 
     require 'koneksi.php';
 
     session_start();
- 
-    if (!isset($_SESSION['username'])) {
-        $_SESSION["nama"] = $nama;
-        header("Location: login.php");
-    }
-
-    if(isset($_GET['cari'])){
-        $cari = $_GET['cari'];
-        $result = mysqli_query($conn, "SELECT * FROM user WHERE nama LIKE '%".$cari."%'");			
-    }else{
-        $result = mysqli_query($conn, "SELECT * FROM user");		
-    }
-
-    $hubungi = [];
-
-    while ($row = mysqli_fetch_assoc($result)){
-        $hubungi[] = $row; 
-    }
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +14,6 @@
     <link rel="icon" href="image/image1.png">
     <link rel="stylesheet" href="stylesheet/style.css">
     <link rel="stylesheet" href="stylesheet/darkmode.css">
-    <link rel="stylesheet" href="stylesheet/styleform.css">
     <script src="jquery.js"></script>
     <script src="https://kit.fontawesome.com/a45685b897.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -44,19 +25,6 @@
             <div class="toggle-moon"><i class="fas fa-moon"></i></div> <!--Icon bulan-->    
             <div class="toggle-sun"><i class="fas fa-sun"></i></div> <!--Icon matahari-->
         </div>
-        <div class="datetime-masukan">
-            <?php
-                date_default_timezone_set("Asia/Makassar");
-                echo date("h:i:sa");
-            ?>
-        </div>
-        <div class="profil">
-            <a onclick="functiondropdown()" class="profil-toggle"><?php echo $_SESSION['nama']; ?> </a>
-            <ul id="dropdown-content" class="dropdown-profil">
-                <li><a href="profil.php"><i class="fa-regular fa-user" style='padding-right: 10px;'></i>Profil</a></li>
-                <li><a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket" style='padding-right: 10px;'></i>Logout</a></li>
-            </ul>
-        </div>
         <a href="index.php"><img src="image/image.png" alt=""></a>
         <div class="header-logo"><a href="index.php">Gahwa Story Coffee</a></div>
         <div class="navbar">
@@ -67,62 +35,69 @@
                 </ul>
             </nav>
         </div>
-        <form action="lihatuser.php" method="GET">
-            <div class="search">
-                <input type="text" name="cari" placeholder="Search..." required>
-            </div>
-            <input type="submit" class="search-submit" value="Cari">
-        </form>
+        <div class="datetime">
+            <?php
+                date_default_timezone_set("Asia/Makassar");
+                echo date("h:i:sa");
+            ?>
+        </div>
+        <div class="profil">
+            <?php
+                if (!isset($_SESSION['username'])) {
+                    $_SESSION["nama"] = $nama;
+                }
+            ?>
+            <a onclick="functiondropdown()" class="profil-toggle"><?php echo $_SESSION['nama']; ?> </a>
+            <ul id="dropdown-content" class="dropdown-profil">
+                <li><a href="profil.php"><i class="fa-regular fa-user" style='padding-right: 10px;'></i>Profil</a></li>
+                <li><a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket" style='padding-right: 10px;'></i>Logout</a></li>
+            </ul>
+        </div>
     </header>
 
-    <div class="main"> 
+    <div class="main">
         <br>
         <br>
         <br>
         <br>
-        <h1>Daftar Akun User Website Gahwa Story Coffee</h1>
-        <br>
-        <?php 
-        if(isset($_GET['cari'])){
-            $cari = $_GET['cari'];
-            echo "<a href='lihatuser.php' role='button' style='text-decoration: none;
-                                                             color: black;
-                                                             margin: 20px;
-                                                             padding: 10px;
-                                                             font-weight: bold;
-                                                             background-color: #b53e65;'>
-            Tampilkan Semua Data
-            </a>";
-        }
-        ?>
-        <table id="table-contact">
-            <tr>
-                <th class="th-no">No</th>
-                <th>Nama</th>
-                <th>Email</th>
-                <th>Username</th>
-                <th class="th-action">Action</th>
-            </tr>
-            <?php $id = 1; foreach($hubungi as $hub) :?>
-            <tr>
-                <td><?php echo $id; ?></td>
-                <td><?php echo $hub ["nama"]; ?></td>
-                <td><?php echo $hub ["email"]; ?></td>
-                <td><?php echo $hub ["username"]; ?></td>
-                <td class="icon">
-                    <a href="deleteuser.php?id=<?php echo $hub ["id_user"]; ?>" role="button" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?');"><i class="fa-regular fa-trash-can"></i></a>
-                </td>
-            </tr>
-            <?php $id++; endforeach; ?>
-        </table>
+        <div class="copy-container">
+            <br>
+            <h1>
+                Haii, Sobat Gahwa
+                <br>
+                We Make Coffee With Love
+            </h1>
+        </div>
+        <div class="content">
+            <h3 id="section-title">Menu</h3>
+            <?php
+                $kopi = mysqli_query($conn, "select * from produk");
+                if(mysqli_num_rows($kopi)>0){
+                    while($row=mysqli_fetch_array($kopi)){
+            ?>
+            <div class="content-item">
+                <li><a href="detail.php?id=<?php echo $row ['id_produk']; ?>"><img src="foto_produk/<?php echo $row ["foto"] ?>" alt="produk-img"></a></li>
+                <li style="color: #b53e65;"><?= $row ['nama_produk']; ?></li>
+            </div>
+            <?php 
+                    }
+                }
+            ?>
+        </div>
     </div>
-    <br>
-    <br>
+
     <footer class="footer">
         <a href="index.php"><img src="image/image.png" alt=""></a>
         <div id="footer-judul">ABOUT US</div>
         <div class="footer-logo"><a href="index.php">Gahwa Story Coffee</a></div>
-        <h3 id="sosmed-footer">Temukan Kami Di</h3>
+        <div class="footer-list">
+            <h3 id="sosmed-footer">Temukan Kami Di</h3>
+            <nav>
+                <ul>
+                    <li><a href="masukan.php">Hubungi Kami</a></li>
+                </ul>
+            </nav>
+        </div>
         <div class="sosmed-container">
             <ul>
                 <li>

@@ -49,7 +49,7 @@
         <div class="navbar">
             <nav>
                 <ul>
-                    <li><a href="homeuser.php">Home</a></li>
+                    <li><a href="homeadmin.php">Home</a></li>
                     <li><a href="#footer-judul">About Us</a></li>
                 </ul>
             </nav>
