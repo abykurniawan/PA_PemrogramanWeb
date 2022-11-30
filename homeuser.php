@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="stylesheet/style.css">
     <link rel="stylesheet" href="stylesheet/darkmode.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="jquery.js"></script>
     <script src="https://kit.fontawesome.com/a45685b897.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -55,22 +56,32 @@
                         </li>
                     </div>
                 </ul>
-                    
+                
                 <div class="col-md-2 text-end">
-                    <div class="profil">
-                        <?php
-                            if (!isset($_SESSION['username'])) {
-                                $_SESSION["nama"] = $nama;
-                                header("Location: homeguest.php");
-                            }
-                        ?>
-                        <a onclick="functiondropdown()" class="profil-toggle"><?php echo $_SESSION['nama']; ?> </a>
-                        <ul id="dropdown-content" class="dropdown-profil">
-                            <li><a href="profil.php"><i class="fa-regular fa-user" style='padding-right: 10px;'></i>Profil</a></li>
-                            <li><a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket" style='padding-right: 10px;'></i>Logout</a></li>
+                    <div class="dropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <?php
+                                        if (!isset($_SESSION['username'])) {
+                                            $_SESSION["nama"] = $nama;
+                                            header("Location: homeguest.php");
+                                        }
+                                    ?>
+                                    <?php echo $_SESSION['nama']; ?>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item rounded-2 active" href="#">Action</a></li>
+                                    <li><a class="dropdown-item rounded-2" href="#">Profil</a></li>
+                                    <li><a class="dropdown-item rounded-2" href="#">Logout</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item rounded-2" href="#">Separated link</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
+
                 <div class="datetime">
                     <?php
                         date_default_timezone_set("Asia/Makassar");
@@ -192,7 +203,6 @@
     </footer>
 
     <script src="script.js"></script>
-    <script src="dropdown.js"></script>
 
 </body>
 </html>
