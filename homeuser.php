@@ -2,6 +2,7 @@
     require 'koneksi.php';
 
     session_start();
+<<<<<<< HEAD
 
     if(isset($_GET['cari'])){
         $cari = $_GET['cari'];
@@ -9,6 +10,8 @@
     }else{
         $result = mysqli_query($conn, "SELECT * FROM produk");		
     }
+=======
+>>>>>>> 67321c0 (rifqii)
 ?>
 
 <!DOCTYPE html>
@@ -97,12 +100,15 @@
         </div>
         <div class="content">
             <h3 id="section-title">Menu</h3>
+<<<<<<< HEAD
             <form action="homeuser.php" method="GET">
                 <div class="search">
                     <input type="text" name="cari" placeholder="Search..." required>
                 </div>
                 <input type="submit" class="search-submit" value="Cari">
             </form>
+=======
+>>>>>>> 67321c0 (rifqii)
             <?php
                 $kopi = mysqli_query($conn, "select * from produk");
                 if(mysqli_num_rows($kopi)>0){
@@ -118,6 +124,7 @@
             ?>
         </div>
     </div>
+<<<<<<< HEAD
     <nav aria-label="...">
   <ul class="pagination">
     <li class="page-item disabled">
@@ -133,6 +140,8 @@
     </li>
   </ul>
 </nav>
+=======
+>>>>>>> 67321c0 (rifqii)
 
     <footer class="bd-footer py-4 py-md-5 mt-0" id="footer">
         <div class="container py-4 py-md-5 px-4 px-md-3">

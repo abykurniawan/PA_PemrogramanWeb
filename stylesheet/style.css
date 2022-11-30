@@ -110,11 +110,19 @@ body {
 
 .search:after {
     content: "";
+<<<<<<< HEAD
     background: #b53e65;
     width: 2px;
     height: 10px;
     position: absolute;
     top: 40px;
+=======
+    background: black;
+    width: 2px;
+    height: 10px;
+    position: absolute;
+    top: 35px;
+>>>>>>> 67321c0 (rifqii)
     right: 2px;
     transform: rotate(135deg);
 }
@@ -124,10 +132,17 @@ body {
     font-size: 16px;
     background: transparent;
     margin-top: 14px;
+<<<<<<< HEAD
     width: 30px;
     height: 30px;
     padding: 5px;
     border: solid 2px #b53e65;
+=======
+    width: 10px;
+    height: 10px;
+    padding: 5px;
+    border: solid 2px black;
+>>>>>>> 67321c0 (rifqii)
     outline: none;
     border-radius: 35px;
     transition: width 0.5s;
@@ -180,7 +195,10 @@ body {
     background-image: url('../image/gahwabg.png');
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 67321c0 (rifqii)
 .copy-container {
     text-align: center;
 }
@@ -564,5 +582,9 @@ body {
     }
 
 
+<<<<<<< HEAD
 }
 
+=======
+}
+>>>>>>> 67321c0 (rifqii)
