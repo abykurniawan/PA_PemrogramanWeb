@@ -1,6 +1,5 @@
 <<<<<<< HEAD
 =======
-<html></html>
 >>>>>>> 67321c0 (rifqii)
 <?php 
     require 'koneksi.php';
