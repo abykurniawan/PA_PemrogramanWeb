@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-=======
->>>>>>> 67321c0 (rifqii)
+
 <?php 
     require 'koneksi.php';
 
