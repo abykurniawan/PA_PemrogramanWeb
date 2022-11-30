@@ -54,50 +54,6 @@ body {
     margin: 35px 25px;
 }
 
-.profil {
-    text-decoration: none;
-    color: #000;
-    float: right;
-}
-
-.profil a {
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    display: block;
-    padding: 34px 37px;
-    color: #000;
-    text-decoration: none;
-}
-
-.profil ul li a {
-    padding: 20px 10px;
-}
-
-.profil:hover, .profil:focus {
-    background: #ead9b5;
-}
-
-.profil ul li :hover {
-    background: #ead9b5;
-}
-
-.profil-toggle {
-    display: inline-block;
-}
-
-.profil-toggle:hover .dropdown-profil {
-    display: block;
-}
-
-.dropdown-profil {
-    padding: none;
-    display: none;
-    list-style: none;
-    z-index: 1;
-    background-color: #f9f9f9;
-}
-
 .show {
     display:block;
 }
@@ -110,19 +66,16 @@ body {
 
 .search:after {
     content: "";
-<<<<<<< HEAD
     background: #b53e65;
     width: 2px;
     height: 10px;
     position: absolute;
     top: 40px;
-=======
-    background: black;
+    background: #b53e65;
     width: 2px;
     height: 10px;
     position: absolute;
-    top: 35px;
->>>>>>> 67321c0 (rifqii)
+    top: 40px;
     right: 2px;
     transform: rotate(135deg);
 }
@@ -132,17 +85,13 @@ body {
     font-size: 16px;
     background: transparent;
     margin-top: 14px;
-<<<<<<< HEAD
     width: 30px;
     height: 30px;
     padding: 5px;
     border: solid 2px #b53e65;
-=======
-    width: 10px;
-    height: 10px;
+    width: 30px;
+    height: 30px;
     padding: 5px;
-    border: solid 2px black;
->>>>>>> 67321c0 (rifqii)
     outline: none;
     border-radius: 35px;
     transition: width 0.5s;
@@ -195,10 +144,6 @@ body {
     background-image: url('../image/gahwabg.png');
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 67321c0 (rifqii)
 .copy-container {
     text-align: center;
 }
@@ -580,11 +525,4 @@ body {
         padding: 10px 10px;
         margin-top: 30px;
     }
-
-
-<<<<<<< HEAD
 }
-
-=======
-}
->>>>>>> 67321c0 (rifqii)

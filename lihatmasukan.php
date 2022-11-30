@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="stylesheet/darkmode.css">
     <link rel="stylesheet" href="stylesheet/styleform.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="jquery.js"></script>
     <script src="https://kit.fontawesome.com/a45685b897.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -60,21 +61,38 @@
                     </div>
                 </ul>
                     
-                <div class="col-md-3 text-end">
-                    <div class="profil">
-                        <?php
-                            if (!isset($_SESSION['username'])) {
-                                $_SESSION["nama"] = $nama;
-                                header("Location: homeguest.php");
-                            }
-                        ?>
-                        <a onclick="functiondropdown()" class="profil-toggle"><?php echo $_SESSION['nama']; ?> </a>
-                        <ul id="dropdown-content" class="dropdown-profil">
-                            <li><a href="profil.php"><i class="fa-regular fa-user" style='padding-right: 10px;'></i>Profil</a></li>
-                            <li><a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket" style='padding-right: 10px;'></i>Logout</a></li>
+                <nav class="navbar navbar-expand-lg">
+                    <div class="dropdown">
+                        <ul class="navbar-nav">
+                            <li class="dropdown">
+                                <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <?php
+                                        if (!isset($_SESSION['username'])) {
+                                            $_SESSION["nama"] = $nama;
+                                            header("Location: homeguest.php");
+                                        }
+                                    ?>
+                                    <?php echo $_SESSION['nama']; ?>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-item text-black rounded-2 active">User Profil</li>
+                                    <li><a class="dropdown-item text-black rounded-2" href="profil.php">Profil</a></li>
+                                    <li><a type="button" class="dropdown-item text-black rounded-2" data-bs-toggle="modal" data-bs-target="#modalSheet" aria-expanded="false">Logout</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li class="dropdown-item rounded-2">
+                                        <?php
+                                            if (!isset($_SESSION['username'])) {
+                                                $_SESSION["nama"] = $nama;
+                                                header("Location: homeguest.php");
+                                            }
+                                        ?>
+                                        <?php echo $_SESSION['nama']; ?>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
-                </div>
+                </nav>
                 <div class="datetime">
                     <?php
                         date_default_timezone_set("Asia/Makassar");
@@ -91,6 +109,23 @@
     </header>
 
     <div class="main"> 
+        <div id="modalSheet" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content rounded-4">
+                    <div class="modal-header border-bottom-0">
+                    <h1 class="modal-title fs-5">Logout Confirm</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body py-0">
+                        <p>Anda Yakin Ingin Keluar???</p>
+                    </div>
+                    <div class="modal-footer flex-column border-top-0">
+                        <a type="button" href="logout.php" class="btn btn-lg btn-primary w-100 mx-0 mb-2">Logout</a>                            
+                        <a type="button" class="btn btn-lg btn-light w-100 mx-0" data-bs-dismiss="modal">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <h1>Daftar Saran dan Kritik Gahwa Story Coffee</h1>
         <br>
         <?php 
@@ -190,7 +225,6 @@
     </footer>
 
     <script src="script.js"></script>
-    <script src="dropdown.js"></script>
 
 </body>
 </html>

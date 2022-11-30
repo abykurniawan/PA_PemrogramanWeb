@@ -56,27 +56,39 @@
                         </li>
                     </div>
                 </ul>
-                
-                <div class="col-md-2 text-end">
+
+                <nav class="navbar navbar-expand-lg">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <?php
-                                if (!isset($_SESSION['username'])) {
-                                    $_SESSION["nama"] = $nama;
-                                    header("Location: homeguest.php");
-                                }
-                            ?>
-                            <?php echo $_SESSION['nama']; ?>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item rounded-2 active" href="#">Action</a></li>
-                            <li><a class="dropdown-item rounded-2" href="#">Profil</a></li>
-                            <li><a class="dropdown-item rounded-2" href="#">Logout</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item rounded-2" href="#">Separated link</a></li>
+                        <ul class="navbar-nav">
+                            <li class="dropdown">
+                                <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <?php
+                                        if (!isset($_SESSION['username'])) {
+                                            $_SESSION["nama"] = $nama;
+                                            header("Location: homeguest.php");
+                                        }
+                                    ?>
+                                    <?php echo $_SESSION['nama']; ?>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-item text-black rounded-2 active">User Profil</li>
+                                    <li><a class="dropdown-item text-black rounded-2" href="profil.php">Profil</a></li>
+                                    <li><a type="button" class="dropdown-item text-black rounded-2" data-bs-toggle="modal" data-bs-target="#modalSheet" aria-expanded="false">Logout</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li class="dropdown-item rounded-2">
+                                        <?php
+                                            if (!isset($_SESSION['username'])) {
+                                                $_SESSION["nama"] = $nama;
+                                                header("Location: homeguest.php");
+                                            }
+                                        ?>
+                                        <?php echo $_SESSION['nama']; ?>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
-                </div>
+                </nav>
                 <div class="datetime">
                     <?php
                         date_default_timezone_set("Asia/Makassar");
@@ -93,6 +105,23 @@
     </header>
 
     <div class="main">
+        <div id="modalSheet" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content rounded-4">
+                    <div class="modal-header border-bottom-0">
+                    <h1 class="modal-title fs-5">Logout Confirm</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body py-0">
+                        <p>Anda Yakin Ingin Keluar???</p>
+                    </div>
+                    <div class="modal-footer flex-column border-top-0">
+                        <a type="button" href="logout.php" class="btn btn-lg btn-primary w-100 mx-0 mb-2">Logout</a>                            
+                        <a type="button" class="btn btn-lg btn-light w-100 mx-0" data-bs-dismiss="modal">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="copy-container">
             <br>
             <h1>
