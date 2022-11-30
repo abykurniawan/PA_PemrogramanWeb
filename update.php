@@ -20,7 +20,7 @@
 
     $hub = $hub[0];
 
-    if(isset($_POST['submit'])) {
+    if(isset($_POST['update'])) {
         $nama = $_POST['nama'];
         $email = $_POST['email'];
         $telepon = $_POST['telepon'];
@@ -35,8 +35,7 @@
 		$file_tmp = $_FILES['nama_file']['tmp_name'];
 
         move_uploaded_file($file_tmp, 'file/'.$nama_file);
-        $sql = "INSERT INTO hubungi (id, nama, email, telepon, jenis, lokasi, pesan, nama_file)
-                VALUES ('', '".$nama."', '".$email."', '".$telepon."', '".$jenis."', '".$lokasi."', '".$pesan."', '".$nama_file."')";
+        $sql = "UPDATE hubungi SET nama = '$nama', email = '$email', telepon = '$telepon', jenis = '$jenis', lokasi = '$lokasi', pesan = '$email', nama_file = '$nama_file' WHERE id = $id";
 
         $result = mysqli_query($conn, $sql);
 
@@ -217,7 +216,7 @@
                 <span class="notice">Apakah Anda Yakin???</span>
 
                 <p>*Bidang Wajib Diisi</p>
-                <input type="submit" id="contact-submit" name="submit" value="Submit">            
+                <input type="submit" id="contact-submit" name="update" value="Submit">            
             </form>
         </div>
     </div>

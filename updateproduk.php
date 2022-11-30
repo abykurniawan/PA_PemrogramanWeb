@@ -8,9 +8,9 @@
         header("Location: login.php");
     }
 
-    $id = $_GET['id_produk'];
+    $id_produk = $_GET['id_produk'];
 
-    $result = mysqli_query($conn, "SELECT * FROM produk where id_produk = $id");
+    $result = mysqli_query($conn, "SELECT * FROM produk where id_produk = $id_produk");
 
     $hub = [];
 
@@ -20,7 +20,7 @@
 
     $hub = $hub[0];
 
-    if(isset($_POST['submit'])) {
+    if(isset($_POST['update'])) {
         $nama_produk = $_POST['nama_produk'];
         $harga = $_POST['harga'];
         $deskripsi = $_POST['deskripsi'];
@@ -32,8 +32,7 @@
 		$file_tmp = $_FILES['foto']['tmp_name'];
 
         move_uploaded_file($file_tmp, 'foto_produk/'.$foto);
-        $sql = "INSERT INTO produk (id_produk, nama_produk, harga, deskripsi, foto)
-                VALUES (null, '".$nama_produk."', '".$harga."', '".$deskripsi."', '".$foto."')";
+        $sql = "UPDATE produk SET nama_produk = '$nama_produk', harga = '$harga', deskripsi = '$deskripsi', foto = '$foto' WHERE id_produk = $id_produk";
 
         $result = mysqli_query($conn, $sql);
 
@@ -186,22 +185,22 @@
             <form action="" name="form" method="POST" enctype="multipart/form-data">
                 <h3 id="section-title">UPDATE PRODUK</h3>
                 <p>Nama</p>
-                <input type="text" name="nama_produk" placeholder="masukkan nama anda" value="<?php echo $hub['nama_produk'] ?>" required>
+                <input type="text" name="nama_produk" placeholder="masukkan nama anda" id="nama_produk" value="<?php echo $hub['nama_produk'] ?>" required>
 
                 <p>Harga</p>
-                <input type="number" name="harga" placeholder="masukkan harga" value="<?php echo $hub['harga'] ?>" required>
+                <input type="number" name="harga" placeholder="masukkan harga" id="harga" value="<?php echo $hub['harga'] ?>" required>
 
                 <p>Deskripsi</p>
-                <input type="text" name="deskripsi" value="<?php echo $hub['deskripsi'] ?>" required>
+                <input type="text" name="deskripsi" id="deskripsi" value="<?php echo $hub['deskripsi'] ?>" required>
 
                 <p>Upload File (Wajib Diisi)</p>
-                <input type="file" name="foto" value="<?php echo $hub['foto'] ?>">
+                <input type="file" name="foto" id="foto" value="<?php echo $hub['foto'] ?>" required>
 
                 <input type="checkbox"><br>
                 <span class="notice">Apakah Anda Yakin???</span>
 
                 <p>*Bidang Wajib Diisi</p>
-                <input type="submit" id="contact-submit" name="submit" value="Submit">            
+                <input type="submit" id="contact-submit" name="update" value="Submit">            
             </form>
         </div>
     </div>
