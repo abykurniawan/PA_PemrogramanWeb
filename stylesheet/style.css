@@ -110,11 +110,11 @@ body {
 
 .search:after {
     content: "";
-    background: black;
+    background: #b53e65;
     width: 2px;
     height: 10px;
     position: absolute;
-    top: 35px;
+    top: 40px;
     right: 2px;
     transform: rotate(135deg);
 }
@@ -124,10 +124,10 @@ body {
     font-size: 16px;
     background: transparent;
     margin-top: 14px;
-    width: 10px;
-    height: 10px;
+    width: 30px;
+    height: 30px;
     padding: 5px;
-    border: solid 2px black;
+    border: solid 2px #b53e65;
     outline: none;
     border-radius: 35px;
     transition: width 0.5s;
@@ -179,6 +179,7 @@ body {
     height: 1200px;
     background-image: url('../image/gahwabg.png');
 }
+
 
 .copy-container {
     text-align: center;
@@ -564,3 +565,4 @@ body {
 
 
 }
+

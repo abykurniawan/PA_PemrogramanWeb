@@ -99,7 +99,6 @@
 
     <div class="main"> 
         <h1>Riwayat Pembelian</h1>
-        <br>
         <form action="riwayat.php" method="GET">
             <div class="search">
                 <input type="text" name="cari" placeholder="Search..." required>

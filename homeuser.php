@@ -2,6 +2,13 @@
     require 'koneksi.php';
 
     session_start();
+
+    if(isset($_GET['cari'])){
+        $cari = $_GET['cari'];
+        $result = mysqli_query($conn, "SELECT * FROM produk WHERE nama_produk LIKE '%".$cari."%'");			
+    }else{
+        $result = mysqli_query($conn, "SELECT * FROM produk");		
+    }
 ?>
 
 <!DOCTYPE html>
@@ -90,6 +97,12 @@
         </div>
         <div class="content">
             <h3 id="section-title">Menu</h3>
+            <form action="homeuser.php" method="GET">
+                <div class="search">
+                    <input type="text" name="cari" placeholder="Search..." required>
+                </div>
+                <input type="submit" class="search-submit" value="Cari">
+            </form>
             <?php
                 $kopi = mysqli_query($conn, "select * from produk");
                 if(mysqli_num_rows($kopi)>0){
@@ -105,6 +118,21 @@
             ?>
         </div>
     </div>
+    <nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <a class="page-link">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active" aria-current="page">
+      <a class="page-link" href="#">2</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
 
     <footer class="bd-footer py-4 py-md-5 mt-0" id="footer">
         <div class="container py-4 py-md-5 px-4 px-md-3">
