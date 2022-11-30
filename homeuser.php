@@ -1,11 +1,11 @@
-<?php 
+<?php
     require 'koneksi.php';
 
     session_start();
 
     if(isset($_GET['cari'])){
         $cari = $_GET['cari'];
-        $result = mysqli_query($conn, "SELECT * FROM produk WHERE nama_produk LIKE '%".$cari."%'");			
+        $result = mysqli_query($conn, "SELECT * FROM produk WHERE nama LIKE '%".$cari."%'");			
     }else{
         $result = mysqli_query($conn, "SELECT * FROM produk");		
     }
@@ -122,6 +122,7 @@
                 </div>
             </div>
         </div>
+
         <div class="copy-container">
             <br>
             <h1>
@@ -130,7 +131,6 @@
                 We Make Coffee With Love
             </h1>
         </div>
-        <div class="content">
             <h3 id="section-title">Menu</h3>
             <form action="homeuser.php" method="GET">
                 <div class="search">
@@ -138,36 +138,66 @@
                 </div>
                 <input type="submit" class="search-submit" value="Cari">
             </form>
-            <?php
-                $kopi = mysqli_query($conn, "select * from produk");
-                if(mysqli_num_rows($kopi)>0){
-                    while($row=mysqli_fetch_array($kopi)){
-            ?>
-            <div class="content-item">
-                <li><a href="detail.php?id=<?php echo $row ['id_produk']; ?>"><img src="foto_produk/<?php echo $row ["foto"] ?>" alt="produk-img"></a></li>
-                <li><a class="nama-produk" href="detail.php?id=<?php echo $row ['id_produk']; ?>"><?= $row ['nama_produk']; ?></a></li>
-            </div>
-            <?php 
+        
+        <div class="container">
+            <div class="row" id="load_data">
+                <?php
+                    include 'koneksi.php';
+
+                    $halaman = 3;
+                    $page = isset($_GET["halaman"]) ? (int)$_GET["halaman"] : 1;
+                    $mulai = ($page>1) ? ($page * $halaman) - $halaman : 0;
+                    $query = "SELECT * FROM produk LIMIT $mulai, $halaman" or die(mysqli_connect_error());
+                    $result = mysqli_query($conn, "SELECT * FROM produk ORDER BY id_produk ASC");
+                    $total = mysqli_num_rows($result);
+                    $dewan1 = $conn->prepare($query);
+                    $dewan1->execute();
+                    $pages = ceil($total/$halaman);
+                    $res1 = $dewan1->get_result();
+                    while ($row = $res1->fetch_assoc()) {
+                    $id = $row["id_produk"];
+                    $foto = $row["foto"];
+                    $nama_produk = $row["nama_produk"];
+                    if (strlen($nama_produk) > 60) {
+                        $nama_produk = substr($nama_produk, 0, 60) . "...";
                     }
-                }
-            ?>
+                    $deskripsi = $row["deskripsi"];
+                    if (strlen($deskripsi) > 100) {
+                        $deskripsi = substr($deskripsi, 0, 100) . "...";
+                    }
+                ?>
+                <div class="col-sm-4 mb-3">
+                    <div class="card">
+                        <img src="foto_produk/<?php echo $row ["foto"] ?>" style="width: 414px; height: 414px;" class="card-img-top" alt="gambar">
+                        <div class="card-body">
+                        <h5 class="card-title"><?php echo $nama_produk; ?></h5>
+                        <p class="card-text"><?php echo $deskripsi; ?></p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="detail.php?id=<?php echo $row ['id_produk']; ?>" class="btn btn-primary">Beli</a>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+            </div>
         </div>
+
+        <nav aria-label="...">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="?halaman=<?php echo $i; ?>">Previous</a>
+                </li>
+                <?php for ($i=1; $i<=$pages ; $i++){ ?>
+                    <li class="page-item active">
+                    <a class="page-link" href="?halaman=<?php echo $i; ?>"><?php echo $i; ?></a>
+                    <?php } ?>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?halaman=<?php echo $i; ?>">Next</a>
+                </li>
+            </ul>
+        </nav>
     </div>
-    <nav aria-label="...">
-  <ul class="pagination">
-    <li class="page-item disabled">
-      <a class="page-link">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item active" aria-current="page">
-      <a class="page-link" href="#">2</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
 
     <footer class="bd-footer py-4 py-md-5 mt-0" id="footer">
         <div class="container py-4 py-md-5 px-4 px-md-3">

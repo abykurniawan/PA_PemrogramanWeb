@@ -115,7 +115,7 @@
         </div>
     </header>
 
-    <div class="main"> 
+    <div class="main-riwayat"> 
         <div id="modalSheet" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content rounded-4">

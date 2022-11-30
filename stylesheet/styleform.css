@@ -102,6 +102,10 @@ table th {
     background-color: #b53e65;
 }
 
+#table-contact {
+    margin-bottom: 20px;
+}
+
 .th-no {
     border-top-left-radius: 10px;
 }

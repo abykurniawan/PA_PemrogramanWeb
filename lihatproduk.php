@@ -1,6 +1,4 @@
 <?php 
-    require 'koneksi.php';
-
     session_start();
 ?>
 
@@ -110,26 +108,47 @@
         <div class="copy-container">
             <br>
             <h1>
-                Haii, Sobat Gahwa
+                List Produk
                 <br>
-                We Make Coffee With Love
+                Gahwa Story Coffee
             </h1>
         </div>
-        <div class="content">
-            <h3 id="section-title">Menu</h3>
-            <?php
-                $kopi = mysqli_query($conn, "select * from produk");
-                if(mysqli_num_rows($kopi)>0){
-                    while($row=mysqli_fetch_array($kopi)){
-            ?>
-            <div class="content-item">
-                <li><a href="detail.php?id=<?php echo $row ['id_produk']; ?>"><img src="foto_produk/<?php echo $row ["foto"] ?>" alt="produk-img"></a></li>
-                <li style="color: #b53e65;"><?= $row ['nama_produk']; ?></li>
-            </div>
-            <?php 
+
+        <div class="container">
+            <div class="row" id="load_data">
+                <?php
+                    include 'koneksi.php';
+                    $query = "SELECT * FROM produk ORDER BY id_produk ASC";
+                    $dewan1 = $conn->prepare($query);
+                    $dewan1->execute();
+                    $res1 = $dewan1->get_result();
+                    while ($row = $res1->fetch_assoc()) {
+                    $id = $row["id_produk"];
+                    $foto = $row["foto"];
+                    $nama_produk = $row["nama_produk"];
+                    if (strlen($nama_produk) > 60) {
+                        $nama_produk = substr($nama_produk, 0, 60) . "...";
                     }
-                }
-            ?>
+                    $deskripsi = $row["deskripsi"];
+                    if (strlen($deskripsi) > 100) {
+                        $deskripsi = substr($deskripsi, 0, 100) . "...";
+                    }
+                ?>
+                <div class="col-sm-4 mb-3">
+                    <div class="card">
+                        <img src="foto_produk/<?php echo $row ["foto"] ?>" style="width: 414px; height: 414px;" class="card-img-top" alt="gambar">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $nama_produk; ?></h5>
+                            <p class="card-text"><?php echo $deskripsi; ?></p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="updateproduk.php?id_produk=<?php echo $row ["id_produk"]; ?>" role="button"><i class="fa-solid fa-pen-to-square" style="color: #b53e65;"></i></a>
+                            <a href="deleteproduk.php?id_produk=<?php echo $row ["id_produk"]; ?>" role="button" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?');"><i class="fa-regular fa-trash-can" style="color: #b53e65;"></i></a>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+            </div>
         </div>
     </div>
 

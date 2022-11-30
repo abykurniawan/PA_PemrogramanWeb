@@ -217,7 +217,7 @@
                 <span class="notice">Apakah Anda Yakin???</span>
 
                 <p>*Bidang Wajib Diisi</p>
-                <input type="submit" id="submit" name="submit" value="submit">            
+                <input type="submit" id="contact-submit" name="submit" value="Submit">            
             </form>
         </div>
     </div>

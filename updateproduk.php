@@ -2,24 +2,72 @@
     require 'koneksi.php';
 
     session_start();
- 
+    
     if (!isset($_SESSION['username'])) {
         $_SESSION["nama"] = $nama;
         header("Location: login.php");
     }
 
-    if(isset($_GET['cari'])){
-        $cari = $_GET['cari'];
-        $result = mysqli_query($conn, "SELECT * FROM user WHERE nama LIKE '%".$cari."%'");			
-    }else{
-        $result = mysqli_query($conn, "SELECT * FROM user");		
-    }
+    $id = $_GET['id_produk'];
 
-    $hubungi = [];
+    $result = mysqli_query($conn, "SELECT * FROM produk where id_produk = $id");
+
+    $hub = [];
 
     while ($row = mysqli_fetch_assoc($result)){
-        $hubungi[] = $row; 
+        $hub[] = $row; 
     }
+
+    $hub = $hub[0];
+
+    if(isset($_POST['submit'])) {
+        $nama_produk = $_POST['nama_produk'];
+        $harga = $_POST['harga'];
+        $deskripsi = $_POST['deskripsi'];
+        $ekstensi_diperbolehkan	= array('png','jpg');
+		$foto = $_FILES['foto']['name'];
+		$x = explode('.', $foto);
+		$ekstensi = strtolower(end($x));
+		$ukuran	= $_FILES['foto']['size'];
+		$file_tmp = $_FILES['foto']['tmp_name'];
+
+        move_uploaded_file($file_tmp, 'foto_produk/'.$foto);
+        $sql = "INSERT INTO produk (id_produk, nama_produk, harga, deskripsi, foto)
+                VALUES (null, '".$nama_produk."', '".$harga."', '".$deskripsi."', '".$foto."')";
+
+        $result = mysqli_query($conn, $sql);
+
+        if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
+            if($ukuran < 1044070){
+                if($result){
+                    ?>
+                        <script>
+                            alert("Data berhasil diupdate!");
+                            window.location='lihatproduk.php';
+                        </script>
+                    <?php
+                }else{
+                    ?>
+                        <script>
+                            alert("Data gagal ditambahkan!");
+                        </script>
+                    <?php
+                }
+            }else{
+                ?>
+                    <script>
+                        alert("Ukuran File Terlalu Besar!");
+                    </script>
+                <?php
+            }
+        }else{
+            ?>
+                <script>
+                    alert("Ekstensi File Tidak Diperbolehkan!");
+                </script>
+            <?php
+        }
+    }    
 ?>
 
 <!DOCTYPE html>
@@ -50,17 +98,25 @@
                     </div>
                 </a>
 
-                <ul class="nav col-md-3 col-md-auto mb-2 justify-content-center mb-md-0">
+                <ul class="nav col-md-4 col-md-auto mb-2 justify-content-center mb-md-0">
                     <div class="navbar">
                         <li class="nav-item">
-                            <a href="homeadmin.php" class="nav-link px-2">Home</a>
+                            <a href="index.php" class="nav-link px-2">Halaman Utama</a>
                         </li>
+                    </div>
+                    <li class="nav-item">
+                        <a href="homeuser.php" class="nav-link px-2 py-3 text-black">Home</a>
+                    </li>
+                    <div class="navbar">
                         <li class="nav-item">
                             <a href="#footer-judul" class="nav-link px-2">About Us</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="riwayat.php" class="nav-link px-2">Riwayat</a>
+                        </li>
                     </div>
                 </ul>
-                    
+
                 <nav class="navbar navbar-expand-lg">
                     <div class="dropdown">
                         <ul class="navbar-nav">
@@ -108,7 +164,7 @@
         </div>
     </header>
 
-    <div class="main-user">
+    <div class="main-contact">
         <div id="modalSheet" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content rounded-4">
@@ -126,41 +182,28 @@
                 </div>
             </div>
         </div>
-        <h1>Daftar Akun User Website Gahwa Story Coffee</h1>
-        <br>
-        <?php 
-        if(isset($_GET['cari'])){
-            $cari = $_GET['cari'];
-            echo "<a href='lihatuser.php' role='button' style='text-decoration: none;
-                                                             color: black;
-                                                             margin: 20px;
-                                                             padding: 10px;
-                                                             font-weight: bold;
-                                                             background-color: #b53e65;'>
-            Tampilkan Semua Data
-            </a>";
-        }
-        ?>
-        <table id="table-contact">
-            <tr>
-                <th class="th-no">No</th>
-                <th>Nama</th>
-                <th>Email</th>
-                <th>Username</th>
-                <th class="th-action">Action</th>
-            </tr>
-            <?php $id = 1; foreach($hubungi as $hub) :?>
-            <tr>
-                <td><?php echo $id; ?></td>
-                <td><?php echo $hub ["nama"]; ?></td>
-                <td><?php echo $hub ["email"]; ?></td>
-                <td><?php echo $hub ["username"]; ?></td>
-                <td class="icon">
-                    <a href="deleteuser.php?id=<?php echo $hub ["id_user"]; ?>" role="button" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?');"><i class="fa-regular fa-trash-can"></i></a>
-                </td>
-            </tr>
-            <?php $id++; endforeach; ?>
-        </table>
+        <div class="contact-form">
+            <form action="" name="form" method="POST" enctype="multipart/form-data">
+                <h3 id="section-title">UPDATE PRODUK</h3>
+                <p>Nama</p>
+                <input type="text" name="nama_produk" placeholder="masukkan nama anda" value="<?php echo $hub['nama_produk'] ?>" required>
+
+                <p>Harga</p>
+                <input type="number" name="harga" placeholder="masukkan harga" value="<?php echo $hub['harga'] ?>" required>
+
+                <p>Deskripsi</p>
+                <input type="text" name="deskripsi" value="<?php echo $hub['deskripsi'] ?>" required>
+
+                <p>Upload File (Wajib Diisi)</p>
+                <input type="file" name="foto" value="<?php echo $hub['foto'] ?>">
+
+                <input type="checkbox"><br>
+                <span class="notice">Apakah Anda Yakin???</span>
+
+                <p>*Bidang Wajib Diisi</p>
+                <input type="submit" id="contact-submit" name="submit" value="Submit">            
+            </form>
+        </div>
     </div>
 
     <footer class="bd-footer py-4 py-md-5 mt-0" id="footer">
@@ -178,7 +221,12 @@
             
                 </div>
                 <div class="col mb-3">
-                    
+                    <h5>Kritik & Saran</h5>
+                    <div class="footer-list">
+                        <ul class="list-unstyled d-flex">
+                            <li class="nav-item mb-2"><a href="masukan.php" class="nav-link p-0 text-muted">Hubungi Kami</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="col mb-3">
                     <h5>Temukan Kami Di</h5>

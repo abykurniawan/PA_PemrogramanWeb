@@ -119,6 +119,18 @@ body {
 }
 
 .main {
+    height: 100%;
+}
+
+.main-riwayat {
+    height: 1200px;
+}
+
+.main-user {
+    height: 1200px;
+}
+
+.main-detail {
     height: 1200px;
 }
 
