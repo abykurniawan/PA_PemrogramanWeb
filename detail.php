@@ -129,34 +129,20 @@
                     if(mysqli_num_rows($kopi)>0){
                         while($row = mysqli_fetch_array($kopi)){
                 ?>
-                <div class="content-item">
-                    <li>
-                        <input type="hidden" name="deskripsi" value="<?php echo $row['deskripsi']; ?>">
-                        <a href="#"><img src="foto_produk/<?php echo $row ["foto"] ?>" alt="produk-img">
-                            <li>
-                                <p>Deskripsi Produk</p>
-                                <?php echo $row['deskripsi']; ?>
-                            </li>
-                        </a>
-                    </li>
-                    <li>
-                        <?php $row['nama_produk']; ?>
-                        <input type="hidden" name="id_produk" value="<?php echo $row['id_produk']; ?>">
-                        <input type="hidden" name="id_user" value="<?php echo $id_user_sekarang ?>">
-                    <li>
-                        <label for="nama_produk" style="font-size: 26px;">Nama Produk</label>
-                        <input type="hidden" name="nama_produk" value="<?php echo $row['nama_produk']; ?>">
-                    </li>
-                    <li style="font-weight: 100;">
-                        <?php echo $row['nama_produk']; ?>
-                    </li>
-                        <label for="harga_produk" style="font-size: 26px; font-weight: bold;">Harga</label>
-                        <input type="hidden" name="harga_produk" value="<?php echo $row['harga']; ?>">
-                    </li>
-                    <li style="font-weight: 100;">
-                        <?php echo $row['harga']; ?>
-                    </li>
-                    <input type="submit" name="submit" value="Beli">
+                <div class="col-sm-4 mb-3 px-4 justify-content-center">
+                    <div class="card">
+                        <form action="" method="post">
+                        <img src="foto_produk/<?php echo $row ["foto"] ?>" style="width: 457px; height: 457px;" class="card-img-top" alt="gambar">
+                        <div class="card-body">
+                        <h5 class="card-title"><?php echo $row['nama_produk']; ?></h5>
+                        <p class="card-text"><?php echo $row['deskripsi']; ?></p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-black">Rp.<?php echo $row['harga']; ?></small>
+                        </div>
+                        <input type="submit" name="submit" value="Beli" class="btn btn-primary">
+                        </form>
+                    </div>
                 </div>
                 <?php 
                     }
